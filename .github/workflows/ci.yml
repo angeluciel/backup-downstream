@@ -1,0 +1,45 @@
+name: CI - BackupMonitor API
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm  lint
+
+      - name: Test
+        run: pnpm test
+        # TODO: separar testes unitários e de integração se necessário
+
+      - name: Coverage
+        run: pnpm run test:coverage
+        # TODO: adicionar verificação automática de limiar >= 70%
+
+      - name: SAST (CodeQL/Semgrep)
+        run: echo "Rodando SAST fictício (CodeQL/Semgrep)..."
+        # TODO: trocar por action oficial do CodeQL ou job com Semgrep
+        # TODO: falhar o job se encontrar vulnerabilidades HIGH/CRITICAL
+
+      - name: Build
+        run: pnpm build
+        # TODO: gerar imagem Docker/artefatos de verdade

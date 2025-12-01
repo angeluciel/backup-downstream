@@ -1,0 +1,20 @@
+{
+  "name": "backup-downstream",
+  "version": "1.0.0",
+  "description": "Kit de downstream (qualidade, CI/CD, release, observabilidade) para o sistema fictício BackupMonitor API.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo \"Rodando lint fictício...\" && exit 0",
+    "test": "echo \"Rodando testes unitários fictícios...\" && exit 0",
+    "test:coverage": "echo \"Gerando relatório de cobertura fictício...\" && exit 0",
+    "build": "echo \"Build fictício da BackupMonitor API...\" && exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "jest": "^29.0.0"
+  },
+  "keywords": [],
+  "author": "João",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1"
+}
