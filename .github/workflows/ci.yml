@@ -41,8 +41,11 @@ jobs:
         run: pnpm  lint
 
       - name: Test
-        run: pnpm test
-        # TODO: separar testes unitários e de integração se necessário
+        run: |
+            pnpm run test:coverage
+            node -e "const c=require('./coverage/coverage-summary.json'); \
+                const pct=c.total.statements.pct; \
+                if(pct<70) { console.error('Coverage below 70%:', pct); process.exit(1); }"
 
       - name: Coverage
         run: pnpm run test:coverage
